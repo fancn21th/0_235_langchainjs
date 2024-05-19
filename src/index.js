@@ -21,6 +21,17 @@ const outputParser = new StringOutputParser();
 
 const chain = RunnableSequence.from([promptTemplate, model, outputParser]);
 
-const result = await chain.invoke({ topic: "bears" });
+// const result = await chain.invoke({ topic: "bears" });
 
-console.log(result);
+// console.log(result);
+
+const stream = await chain.stream({ topic: "bears" });
+
+const chunks = [];
+
+for await (const chunk of stream) {
+  console.log(chunk);
+  chunks.push(chunk);
+}
+
+console.log(chunks.join(""));
