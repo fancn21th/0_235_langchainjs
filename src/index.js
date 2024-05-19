@@ -6,7 +6,7 @@ import { RunnableSequence } from "@langchain/core/runnables";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 
 // Configure your corporate proxy settings
-const proxyUrl = process.env.PROXY_URL; // PROXY_URL=http://localhost:1234 defined in .env file
+const proxyUrl = process.env.PROXY_URL; // PROXY_URL=http://127.0.0.1:1234 defined in .env file
 const proxyAgent = new HttpsProxyAgent(proxyUrl);
 
 const model = new ChatOpenAI({
